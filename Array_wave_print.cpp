@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+void wavePrint(int **input, int nRows, int mCols)
+{
+    // Write your code here
+    for (int i = 0; i < mCols; i++)
+    {
+        for (int j = 0; j < nRows; j++)
+        {
+            cout << input[j][i] << " ";
+        }
+        i++;
+        if (i < mCols)
+        {
+
+            for (int j = nRows - 1; j >= 0; j--)
+            {
+                cout << input[j][i] << " ";
+            }
+        }
+    }
+}
+
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int row, col;
+        cin >> row >> col;
+        int **input = new int *[row];
+        for (int i = 0; i < row; i++)
+        {
+            input[i] = new int[col];
+            for (int j = 0; j < col; j++)
+            {
+                cin >> input[i][j];
+            }
+        }
+        wavePrint(input, row, col);
+        cout << endl;
+    }
+}

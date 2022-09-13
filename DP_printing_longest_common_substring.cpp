@@ -1,0 +1,77 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+int dp[1000][1000];
+int lcs(string s1, string s2, int m, int n)
+{
+
+    for (int i = 0; i < m + 1; i++)
+    {
+        for (int j = 0; j < n + 1; j++)
+        {
+            dp[i][j] = -1;
+        }
+    }
+    for (int i = 0; i < m + 1; i++)
+    {
+        for (int j = 0; j < n + 1; j++)
+        {
+            if (i == 0 || j == 0)
+            {
+                dp[i][j] = 0;
+                continue;
+            }
+            if (s1[i - 1] == s2[j - 1])
+            {
+                dp[i][j] = 1 + dp[i - 1][j - 1];
+            }
+            else
+            {
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+    }
+    return dp[m][n];
+}
+
+int main()
+{
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    string s1, s2;
+    // vector<string>res;
+    string res = "";
+    cin >> s1 >> s2;
+
+    int m = s1.size();
+    int n = s2.size();
+
+    lcs(s1, s2, m, n);
+    int i = m;
+    int j = n;
+    while (i > 0 && j > 0)
+    {
+
+        if (s1[i - 1] == s2[j - 1])
+        {
+            res = res + s1[i - 1];
+
+            i--;
+            j--;
+        }
+        else
+        {
+            if (dp[i][j - 1] > dp[i - 1][j])
+                j -= 1;
+            else
+                i -= 1;
+        }
+    }
+    reverse(res.begin(), res.end());
+    cout << res;
+
+    return 0;
+}
