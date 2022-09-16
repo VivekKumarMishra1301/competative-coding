@@ -51,6 +51,7 @@ int countDigitOne(int n) {
 };*
 
 /*USING MATHEMATICAL APPROACH*/
+
 class Solution
 {
 public:
