@@ -13,9 +13,9 @@ void quickSort(int input[], int size)
     }
     int pivot = input[0];
     int count = 0;
-    for (int i = 0; i < size; i++)
+    for (int i = 1; i < size; i++)
     {
-        if (input[i] < pivot)
+        if (input[i] <= pivot)
         {
             count++;
         }
@@ -26,12 +26,13 @@ void quickSort(int input[], int size)
     int i = 0, j = size - 1;
     while (i < count)
     {
-        if (input[i] < pivot)
+        if (input[i] <= pivot)
         {
             i++;
         }
         else if (input[j] > pivot)
         {
+
             j--;
         }
         else
@@ -43,34 +44,36 @@ void quickSort(int input[], int size)
             j--;
         }
     }
-    for (int i = 0; i < size; i++)
+    //     for(int i=0;i<size;i++){
+    //         cout<<input[i]<<" ";
+    //     }
+    int pi = count;
+    int arr1[5000], arr2[5000];
+    for (int i = 0; i < pi; i++)
     {
-        cout << input[i] << " ";
+
+        arr1[i] = input[i];
     }
-    //     int pi=count;
-    //     int arr1[500],arr2[500];
-    //     for(int i=0;i<pi;i++){
 
-    //         arr1[i]=input[i];
+    int l = 0;
+    for (int i = pi + 1; i < size; i++)
+    {
+        arr2[l++] = input[i];
+    }
+    int size2 = size - pi - 1;
 
-    //     }
+    quickSort(arr1, pi);
+    quickSort(arr2, size2);
 
-    //     int l=0;
-    //     for(int i=pi+1;i<size;i++){
-    //         arr2[l++]=input[i];
-    //     }
-    //     int size2=size-pi-1;
-
-    //     quickSort(arr1,pi);
-    //     quickSort(arr2,size2);
-
-    //     for(int i=0;i<pi;i++){
-    //         input[i]=arr1[i];
-    //     }
-    //     int p=0;
-    //     for(int i=pi+1;i<size;i++){
-    //         input[i]=arr2[p++];
-    //     }
+    for (int i = 0; i < pi; i++)
+    {
+        input[i] = arr1[i];
+    }
+    int p = 0;
+    for (int i = pi + 1; i < size; i++)
+    {
+        input[i] = arr2[p++];
+    }
 }
 
 int main()
