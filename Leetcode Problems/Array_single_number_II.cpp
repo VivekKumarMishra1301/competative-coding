@@ -1,0 +1,1 @@
+i < nums.size() - 1
