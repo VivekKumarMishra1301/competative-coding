@@ -1,6 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <queue>
+#include <vector>
 using namespace std;
 
 template <typename T>
@@ -12,7 +12,7 @@ public:
 
     TreeNode(T data) { this->data = data; }
 
-    TreeNode()
+    ~TreeNode()
     {
         for (int i = 0; i < children.size(); i++)
         {
@@ -21,28 +21,23 @@ public:
     }
 };
 
-int sumOfNodes(TreeNode<int> *root)
+#include <algorithm>
+int getHeight(TreeNode<int> *root)
 {
     // Write your code here
-    int sum = 0;
-    queue<TreeNode<int> *> pendingNodes;
-    pendingNodes.push(root);
-    TreeNode<int> *front = pendingNodes.front();
-    // pendingNodes.pop();
-    sum = sum + front->data;
-    while (pendingNodes.size() != 0)
+    int ans = 1;
+    vector<int> height;
+    for (int i = 0; i < root->children.size(); i++)
     {
-        TreeNode<int> *front = pendingNodes.front();
-        pendingNodes.pop();
-        // sum=sum+front->data;
-        for (int i = 0; i < front->children.size(); i++)
-        {
-            TreeNode<int> *child = front->children[i];
-            pendingNodes.push(child);
-            sum = sum + child->data;
-        }
+        ans = 1 + getHeight(root->children[i]);
+        height.push_back(ans);
     }
-    return sum;
+    sort(height.begin(), height.end());
+    if (height.size() == 0)
+    {
+        return 1;
+    }
+    return height[height.size() - 1];
 }
 
 TreeNode<int> *takeInputLevelWise()
@@ -76,5 +71,5 @@ TreeNode<int> *takeInputLevelWise()
 int main()
 {
     TreeNode<int> *root = takeInputLevelWise();
-    cout << sumOfNodes(root);
+    cout << getHeight(root);
 }

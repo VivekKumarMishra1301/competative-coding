@@ -1,6 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <queue>
+#include <vector>
 using namespace std;
 
 template <typename T>
@@ -12,7 +12,7 @@ public:
 
     TreeNode(T data) { this->data = data; }
 
-    TreeNode()
+    ~TreeNode()
     {
         for (int i = 0; i < children.size(); i++)
         {
@@ -21,28 +21,32 @@ public:
     }
 };
 
-int sumOfNodes(TreeNode<int> *root)
+TreeNode<int> *maxSumNode(TreeNode<int> *root)
 {
     // Write your code here
-    int sum = 0;
     queue<TreeNode<int> *> pendingNodes;
     pendingNodes.push(root);
-    TreeNode<int> *front = pendingNodes.front();
-    // pendingNodes.pop();
-    sum = sum + front->data;
+    int max = 0;
+    TreeNode<int> *maxNode = root;
     while (pendingNodes.size() != 0)
     {
+
         TreeNode<int> *front = pendingNodes.front();
         pendingNodes.pop();
-        // sum=sum+front->data;
+        int sum = front->data;
         for (int i = 0; i < front->children.size(); i++)
         {
             TreeNode<int> *child = front->children[i];
-            pendingNodes.push(child);
             sum = sum + child->data;
+            pendingNodes.push(child);
+        }
+        if (max < sum)
+        {
+            max = sum;
+            maxNode = front;
         }
     }
-    return sum;
+    return maxNode;
 }
 
 TreeNode<int> *takeInputLevelWise()
@@ -76,5 +80,11 @@ TreeNode<int> *takeInputLevelWise()
 int main()
 {
     TreeNode<int> *root = takeInputLevelWise();
-    cout << sumOfNodes(root);
+
+    TreeNode<int> *ans = maxSumNode(root);
+
+    if (ans != NULL)
+    {
+        cout << ans->data;
+    }
 }

@@ -1,6 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <queue>
+#include <vector>
 using namespace std;
 
 template <typename T>
@@ -12,7 +12,7 @@ public:
 
     TreeNode(T data) { this->data = data; }
 
-    TreeNode()
+    ~TreeNode()
     {
         for (int i = 0; i < children.size(); i++)
         {
@@ -21,28 +21,22 @@ public:
     }
 };
 
-int sumOfNodes(TreeNode<int> *root)
+int getLargeNodeCount(TreeNode<int> *root, int x)
 {
     // Write your code here
-    int sum = 0;
-    queue<TreeNode<int> *> pendingNodes;
-    pendingNodes.push(root);
-    TreeNode<int> *front = pendingNodes.front();
-    // pendingNodes.pop();
-    sum = sum + front->data;
-    while (pendingNodes.size() != 0)
+    int count = 0;
+    if (root->data > x)
     {
-        TreeNode<int> *front = pendingNodes.front();
-        pendingNodes.pop();
-        // sum=sum+front->data;
-        for (int i = 0; i < front->children.size(); i++)
-        {
-            TreeNode<int> *child = front->children[i];
-            pendingNodes.push(child);
-            sum = sum + child->data;
-        }
+        count = 1;
     }
-    return sum;
+
+    for (int i = 0; i < root->children.size(); i++)
+    {
+        int ans = getLargeNodeCount(root->children[i], x);
+
+        count += ans;
+    }
+    return count;
 }
 
 TreeNode<int> *takeInputLevelWise()
@@ -76,5 +70,7 @@ TreeNode<int> *takeInputLevelWise()
 int main()
 {
     TreeNode<int> *root = takeInputLevelWise();
-    cout << sumOfNodes(root);
+    int x;
+    cin >> x;
+    cout << getLargeNodeCount(root, x);
 }
