@@ -61,3 +61,8 @@ int main()
 
     return 0;
 }
+int t;
+cin>>t;
+while(t--){
+    
+}
