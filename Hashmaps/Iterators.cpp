@@ -23,7 +23,7 @@ int main()
 
     // find
     unordered_map<string, int>::iterator it2 = ourmap.find("abc");
-    ourmap.erase(it2, it2 + 4);
+    ourmap.erase(it2, it2 + 1);
 
     vector<int> v;
     v.push_back(1);
