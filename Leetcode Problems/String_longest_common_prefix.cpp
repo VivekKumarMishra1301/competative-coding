@@ -19,7 +19,7 @@ public:
                     return hold;
                 }
             }
-            hold = hol + strs[0][i];
+            hold = hold + strs[0][i];
         }
         return hold;
     }
