@@ -13,7 +13,7 @@ public:
         }
 
         for (int i = 0; i < queries.size(); i++)
-        {
+        { // upperbound is the binary search resturn the index where the element lies in the array
             hold.push_back(upper_bound(prefix.begin(), prefix.end(), queries[i]) - prefix.begin());
         }
         return hold;
