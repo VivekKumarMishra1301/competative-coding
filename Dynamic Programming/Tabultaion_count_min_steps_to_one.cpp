@@ -6,6 +6,7 @@ int count(int n, vector<int> &dp)
 {
     dp[0] = 0;
     dp[1] = 0;
+    
 
     for (int i = 2; i <= n; i++)
     {
