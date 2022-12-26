@@ -28,7 +28,7 @@ int minCostPath(int **input, int m, int n)
 {
     // Write your code here
 
-    vector<vector<int>> dp(m, vector<int>(n, -1));
+    vector<vector<int>> dp(m + 1, vector<int>(n + 1, -1));
 
     return findMinPath(input, 0, 0, m, n, dp);
 }
