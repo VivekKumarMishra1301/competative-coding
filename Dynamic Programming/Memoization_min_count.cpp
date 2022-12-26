@@ -26,7 +26,6 @@ int findNum(int n, vector<int> &dp)
 int minCount(int n)
 {
     // Write your code here
-
     vector<int> dp(n + 1, -1);
     return findNum(n, dp);
 }
