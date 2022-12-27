@@ -29,8 +29,7 @@ int minCostPath(int **input, int m, int n)
     {
         for (int j = n - 2; j >= 0; j--)
         {
-            dp[i][j] =
-                min(dp[i + 1][j], min(dp[i + 1][j + 1], dp[i][j + 1])) + input[i][j];
+            dp[i][j] = min(dp[i + 1][j], min(dp[i + 1][j + 1], dp[i][j + 1])) + input[i][j];
         }
     }
     return dp[0][0];
