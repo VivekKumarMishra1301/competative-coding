@@ -4,14 +4,14 @@ using namespace std;
 void bubbleSort(int *input, int size)
 {
     // Write your code here
-    int temp;
+    // int temp;
     for (int i = 0; i < size - 1; i++)
     {
         for (int j = 0; j < size - 1 - i; j++)
         {
             if (input[j] > input[j + 1])
             {
-                temp = input[j];
+                int temp = input[j];
                 input[j] = input[j + 1];
                 input[j + 1] = temp;
             }
