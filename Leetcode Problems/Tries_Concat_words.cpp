@@ -1,5 +1,6 @@
 class Solution
 {
+
 public:
     unordered_map<string, int> meraMap;
     bool canConcat(string word)
