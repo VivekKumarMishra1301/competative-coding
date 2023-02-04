@@ -19,7 +19,7 @@ int lcs(string s, string t)
 
         int a = lcs(s.substr(1), t);
         int b = lcs(s, t.substr(1));
-        int c = lcs(s.substr(1), t.substr(1));
+        int c = lcs(s.substr(1), t.substr(1)); // you can remove this because it does the redundant operations
         return max(a, max(b, c));
     }
     int main()
