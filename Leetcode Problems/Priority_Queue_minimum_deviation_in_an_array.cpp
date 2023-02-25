@@ -34,3 +34,27 @@ public:
         return ans;
     }
 };
+
+
+
+
+
+
+
+
+
+
+    int remainingSticks = n;
+    sort(lengths, lengths + n);
+    
+    for(int i=0; i<n; i++)
+    {
+        cout << remainingSticks << " ";
+        int count = 1;
+        while (i+1 < n && lengths[i] == lengths[i+1])
+        {
+            count++;
+            i++;
+        }
+        remainingSticks -= count;
+    }
