@@ -11,8 +11,8 @@ public:
             {
                 cnt += ((z * (z + 1)) / 2);
                 z = 0;
-            }
-            else
+            }HAsh
+map            else
             {
                 z++;
             }
