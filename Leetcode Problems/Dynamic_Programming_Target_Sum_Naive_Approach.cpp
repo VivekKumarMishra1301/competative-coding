@@ -11,9 +11,9 @@ public:
             }
             return 0;
         }
-        int pos = find(nums, ind - 1, k, sum - nums[ind]);
+        int positive = find(nums, ind - 1, k, sum - nums[ind]);
         int neg = find(nums, ind - 1, k, sum + nums[ind]);
-        return pos + neg;
+        return positive + neg;
     }
 
     int findTargetSumWays(vector<int> &nums, int target)
