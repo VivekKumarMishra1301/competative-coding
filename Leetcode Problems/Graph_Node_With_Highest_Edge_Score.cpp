@@ -29,3 +29,38 @@ public:
         return hold;
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+bool is(int san)
+{
+    
+                if (san <= 1)
+                    return false;
+
+  if (san == 2 || san == 3)
+        return true;
+                    
+                    if (san % 2 == 0 || san % 3 == 0)
+                        return false;
+     
+    
+            for (int i = 5; i <= sqrt(san); i = i + 6)
+        if (san % i == 0 || san % (i + 2) == 0)
+            return false;
+ 
+    return true;
+}
