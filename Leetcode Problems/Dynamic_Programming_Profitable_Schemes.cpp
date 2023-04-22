@@ -32,3 +32,21 @@ public:
         return hold;
     }
 };
+
+
+
+
+
+
+
+
+if(by1>=ay1&&by1<=ay2){
+            cy=(long)abs(by1)+(long)min((long)abs(bx2),(long)(ay1));
+            
+            
+        }
+        if(ay1>=by1&&ay1<=bx2){
+            cy=(long)abs(ay1)+(long)min((long)abs(ay2),(long)(by1));
+            
+            
+        }
