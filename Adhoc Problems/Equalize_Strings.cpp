@@ -10,7 +10,8 @@ void solve()
 {
     int n;
     cin >> n;
-    string s;
+    Ij
+        string s;
     string t;
     cin >> s >> t;
     int mincost = 0;
