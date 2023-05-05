@@ -12,7 +12,7 @@ public:
 
     int maxVowels(string s, int k)
     {
-        map<char, int>;
+        map<char, int>meraMap;
         int st = 0;
         int en = 0;
         int maxi = 0;
