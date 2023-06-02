@@ -29,4 +29,4 @@ public:
         vector<vector<int>> dp(cs + 1, vector<int>(cs + 1, -1));
         return find(1, cs, cuts, dp);
     }
-};
+};C
